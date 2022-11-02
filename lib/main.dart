@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/email_password_sign_in.dart';
 import 'package:flutter_firebase_auth/email_password_sign_up.dart';
+import 'package:flutter_firebase_auth/firebase_options.dart';
 import 'package:flutter_firebase_auth/home_screen.dart';
 import 'package:flutter_firebase_auth/phone_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
