@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_auth/email_password_sign_in.dart';
+import 'package:flutter_firebase_auth/email_password_sign_up.dart';
+import 'package:flutter_firebase_auth/home_screen.dart';
+import 'package:flutter_firebase_auth/phone_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,17 +19,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(),
+      routes: {
+        EmailPasswordSignUpScreen.route: (context) =>
+            const EmailPasswordSignUpScreen(),
+        EmailPasswordSignInScreen.route: (context) =>
+            const EmailPasswordSignInScreen(),
+        PhoneScreen.route: (context) => const PhoneScreen(),
+      },
     );
   }
 }
