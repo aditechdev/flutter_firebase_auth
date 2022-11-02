@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_auth/services/firebase_auth_methods.dart';
 import 'package:flutter_firebase_auth/widget/button_widget.dart';
 import 'package:flutter_firebase_auth/widget/compact_text_editing_controller.dart';
 
@@ -15,6 +17,10 @@ class _EmailPasswordSignInScreenState extends State<EmailPasswordSignInScreen> {
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _passwordEditingController =
       TextEditingController();
+
+  loginUser() async {
+    FirebaseAuthMethod(FirebaseAuth.instance).loginWithEmail(email: _emailEditingController.text, password: _passwordEditingController.text, context: context);
+  }
 
   @override
   void dispose() {
@@ -51,7 +57,7 @@ class _EmailPasswordSignInScreenState extends State<EmailPasswordSignInScreen> {
           ),
           ButtonWidget(
             btnText: 'Login',
-            onTap: () {},
+            onTap: loginUser,
           ),
         ],
       ),
